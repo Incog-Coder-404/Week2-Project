@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My personal page</title>
+    <style>
+        body { font-family: "Times New Roman", serif; padding: 20px; }
+        section { margin-bottom: 20px; border: 1px solid black; padding: 10px; }
+        /* Style for the Featured Content boxes */
+        .resource-box { border: 1px solid #000; margin: 10px 0; padding: 10px; }
+    </style>
+</head>
+<body>
+
+    <div style="text-align: right;">
+        <input type="checkbox" id="darkModeToggle"> Dark Mode
+    </div>
+
+    <h1>Welcome to My Page</h1>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Joseph Stephenson</p>
+        <p>Hello World! My name is Joseph Stephenson and I am a student at ECPI University currently learning JavaScript.</p>
+        
+        <h3>Technical Skills</h3>
+        <div id="skillsList">
+            <script>
+                // Create an array of skills and display them in an unordered list, listing basic skils of programming languages. Not certified.
+                var skills = ["Python", "HTML","JavaScript", "CSS", "C++",];
+                document.write("<ul>");
+                for (var i = 0; i < skills.length; i++) {
+                    document.write("<li>" + skills[i] + "</li>");
+                }
+                document.write("</ul>");
+            </script>
+        </div>
+    </section>
+
+    <section id="featured">
+        <h2>Featured Content</h2>
+        <div id="uniResources" class="resource-box">
+            <h3>University Resources</h3>
+            <p><a href="https://www.ecpi.edu/">ECPI Program Home Page</a></p>
+        </div>
+        <div id="personalProjects" class="resource-box">
+            <h3>Personal Projects</h3>
+            <p><a href="https://github.com/Incog-Coder-404">My Github page</a></p>
+                
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form id="contactForm">
+            Name: <input type="text" id="userName">
+            <input type="button" id="submitBtn" value="Submit">
+        </form>
+    </section>
+
+    <script>
+        "use strict";
+
+        // if else statement to show/hide sections based on number of projects
+        var projects = ["Portfolio", "Area Debugger"]; /// no projects
+        var uniDiv = document.getElementById("uniResources");
+        var projectDiv = document.getElementById("personalProjects");
+
+        if (projects.length < 3) {
+            // Requirement: Show both if fewer than 3
+            uniDiv.style.display = "block";
+            projectDiv.style.display = "block";
+        } else {
+            // Requirement: Show projects, hide University
+            uniDiv.style.display = "none";
+            projectDiv.style.display = "block";
+        }
+
+        // Dark mode toggle 
+        var toggle = document.getElementById("darkModeToggle");
+        
+        toggle.onclick = function() {
+            if (toggle.checked) {
+                document.body.style.backgroundColor = "black";
+                document.body.style.color = "white";
+            } else {
+                document.body.style.backgroundColor = "white";
+                document.body.style.color = "black";
+            }
+        };
+
+        // form submission alert.
+        var submitBtn = document.getElementById("submitBtn");
+        
+        submitBtn.onclick = function(event) {
+            var nameInput = document.getElementById("userName").value;
+            alert("Thank you, " + nameInput + ", your message has been sent!");
+        };
+    </script>
+</body>
+</html>
